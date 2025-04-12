@@ -24,8 +24,8 @@
           "type": "dropdown",
           "required": false,
           "title": "Search Engine",
-          "description": "Search Engine for query (default: Google).",
-          "default": "Google",
+          "description": "Search Engine for query (default: DuckDuckGo).",
+          "default": "DuckDuckGo",
           "data": [
             {
               "title": "Google",
