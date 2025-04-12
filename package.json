@@ -75,7 +75,7 @@
       "name": "profileDirectorySuffix",
       "title": "Profile Directory Suffix",
       "default": "Default (alpha)",
-      "description": "The Librewolf profile directory suffix, check it with `ls ~/Library/Application Support/librewolf/Profiles`",
+      "description": "The Librewolf profile directory suffix, check it with `ls ~/Library/Application Support/LibreWolf/Profiles`",
       "type": "textfield",
       "required": false
     },

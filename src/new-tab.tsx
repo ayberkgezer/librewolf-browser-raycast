@@ -17,9 +17,7 @@ export default function Command(): ReactElement {
         <LibrewolfListEntries.NewTabEntry searchText={searchText} />
       </List.Section>
       <List.Section title="Recently Closed" key="recently-closed">
-        {entriesHistory?.map((e) => (
-          <LibrewolfListEntries.HistoryEntry entry={e} key={e.id} />
-        ))}
+        {entriesHistory?.map((e) => <LibrewolfListEntries.HistoryEntry entry={e} key={e.id} />)}
       </List.Section>
     </List>
   );

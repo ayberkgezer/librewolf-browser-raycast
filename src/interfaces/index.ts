@@ -8,7 +8,10 @@ export interface Preferences {
 }
 
 export class Tab {
-  constructor(public readonly title: string, public readonly url: string) {}
+  constructor(
+    public readonly title: string,
+    public readonly url: string,
+  ) {}
 
   static parse(entry: { url: string; title: string }): Tab {
     return new Tab(entry.title, entry.url);

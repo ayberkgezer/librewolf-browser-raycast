@@ -46,13 +46,21 @@ export function useBookmarkSearch(query: string | undefined): SearchResult<Histo
       const isRetryableError =
         error.message?.includes("database is locked") || error.message?.includes("disk image is malformed");
 
-      if (isRetryableError && retryCount < 3) {
-        setTimeout(() => {
-          setRetryCount(retryCount + 1);
-        }, 100 * (retryCount + 1));
+      // Increase max retries and use exponential backoff
+      if (isRetryableError && retryCount < 5) {
+        setTimeout(
+          () => {
+            setRetryCount(retryCount + 1);
+          },
+          Math.pow(2, retryCount) * 250, // Exponential backoff: 250ms, 500ms, 1000ms, 2000ms, 4000ms
+        );
       }
     },
   });
 
-  return { data, isLoading, errorView: permissionView as ReactElement };
+  return {
+    data,
+    isLoading,
+    errorView: permissionView as ReactElement,
+  };
 }

@@ -7,7 +7,7 @@ const userDataDirectoryPath = () => {
     throw new Error("$HOME environment variable is not set.");
   }
 
-  return path.join(process.env.HOME, "Library", "Application Support", "zen", "Profiles");
+  return path.join(process.env.HOME, "Library", "Application Support", "LibreWolf", "Profiles");
 };
 
 const getProfileName = (userDirectoryPath: string) => {
@@ -20,11 +20,11 @@ const getProfileName = (userDirectoryPath: string) => {
   // 3. Default alpha profile
   // 4. First available profile
   // 5. Empty string if no profiles found
-  
+
   const customProfile = profiles.filter((profile) => profile.endsWith(preferences.profileDirectorySuffix))[0];
   const defaultReleaseProfile = profiles.filter((profile) => profile.endsWith(".Default (release)"))[0];
   const defaultAlphaProfile = profiles.filter((profile) => profile.endsWith(".Default (alpha)"))[0];
-  
+
   if (customProfile) {
     return customProfile;
   } else if (defaultReleaseProfile) {
@@ -56,7 +56,7 @@ export const getSessionManagerExtensionPath = (extensionId: string) => {
     "storage",
     "default",
     `moz-extension+++${extensionId}`,
-    "idb"
+    "idb",
   );
 };
 
@@ -71,7 +71,7 @@ export const getSessionActivePath = async () => {
     userDirectoryPath,
     await getProfileName(userDirectoryPath),
     "sessionstore-backups",
-    "recovery.jsonlz4"
+    "recovery.jsonlz4",
   );
 };
 
@@ -90,7 +90,7 @@ export function decodeLZ4(buffer: Buffer) {
   return JSON.parse(data.toString());
 }
 
-function decodeBlock(input: any, output: any, sIdx?: any, eIdx?: any) {
+function decodeBlock(input: Buffer, output: Buffer, sIdx?: number, eIdx?: number) {
   sIdx = sIdx || 0;
   eIdx = eIdx || input.length - sIdx;
   let a;

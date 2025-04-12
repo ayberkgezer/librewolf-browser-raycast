@@ -13,9 +13,7 @@ export default function Command(): ReactElement {
 
   return (
     <List onSearchTextChange={setSearchText} isLoading={isLoading} throttle={false}>
-      {data?.map((e) => (
-        <LibrewolfListEntries.HistoryEntry entry={e} key={e.id} />
-      ))}
+      {data?.map((e) => <LibrewolfListEntries.HistoryEntry entry={e} key={e.id} />)}
     </List>
   );
 }

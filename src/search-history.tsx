@@ -35,9 +35,7 @@ export default function Command(): ReactElement {
     <List onSearchTextChange={setSearchText} isLoading={isLoading} throttle={true}>
       {groups?.map((group) => (
         <List.Section title={group} key={group}>
-          {groupedEntries?.get(group)?.map((e) => (
-            <LibrewolfListEntries.HistoryEntry entry={e} key={e.id} />
-          ))}
+          {groupedEntries?.get(group)?.map((e) => <LibrewolfListEntries.HistoryEntry entry={e} key={e.id} />)}
         </List.Section>
       ))}
     </List>
